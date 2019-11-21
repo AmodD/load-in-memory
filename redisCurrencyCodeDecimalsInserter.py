@@ -31,4 +31,3 @@ def redisInserter():
 if __name__=='__main__':
     redisInserter()
     print(redisClient.hgetall('currencyCodeMapping'))
-    
