@@ -8,9 +8,7 @@
 + [Getting the code](#getting_the_code)
 + [How To Run](#how_to_run)
 + [How To Access](#how_to_access)
-    + [For Accessing terminal.py](#for-accessing-terminalpy)
-    + [For Accessing api.py](#for-accessing-apipy)
-    + [For Accessing eventApi.py](#for-accessing-eventapipy)
+
 
 <a name="introduction"/>
 
@@ -113,7 +111,6 @@ from an api
 
 ## How To Access
 
-<a name="for-accessing-terminalpy"/>
 
 + ##### For Accessing redisCurrencyCodeDecimalsInserter.py
 
