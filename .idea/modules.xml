@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/currencyCode-decimals-redis.iml" filepath="$PROJECT_DIR$/.idea/currencyCode-decimals-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/loadcache.iml" filepath="$PROJECT_DIR$/.idea/loadcache.iml" />
     </modules>
   </component>
 </project>
