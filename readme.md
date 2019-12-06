@@ -108,7 +108,7 @@ from an api
 ## How To Run
 + Terminal
 
-        python3 redisCurrencyCodeDecimalsInserter.py
+        python3 loadInMemory.py
 
 <a name="how_to_access"/>
 
@@ -117,7 +117,7 @@ from an api
 
 + ##### For Accessing redisCurrencyCodeDecimalsInserter.py
 
-    + redisCurrencyCodeDecimalsInserter.py creates a hash-map named : currencyCodeMapping 
+    + loadInMemory.py creates a hash-map named : currencyCodeMapping 
  
     + currencyCodeMapping hash-map has keys as currency codes and values as number of decimal places
     
