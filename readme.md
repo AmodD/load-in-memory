@@ -85,7 +85,7 @@ from an api
     
 + else type
     
-      git clone https://github.com/fortiate/loadcache.git 
+      git clone https://github.com/fortiate/load-in-memory.git
 
     
 + Type the following command in the command prompt inside the folder containing
