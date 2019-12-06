@@ -26,8 +26,9 @@ currencyCodes = {'784': 2, '971': 2, '008': 2, '051': 2, '532': 2, '973': 2, '03
 
 def redisInserter():
     redisClient.hmset('currencyCodeMapping', currencyCodes)
+    print(redisClient.hgetall('currencyCodeMapping'))
 
 
 if __name__=='__main__':
     redisInserter()
-    print(redisClient.hgetall('currencyCodeMapping'))
+    # print(redisClient.hgetall('currencyCodeMapping'))

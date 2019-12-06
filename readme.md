@@ -13,11 +13,14 @@
 <a name="introduction"/>
 
 ## Introduction
-+ This is the loadcache application where you can load the memory with currency codes and its number of decimal places
-+ It uses redis database to load the currency codes and number of decimal places in memory
++ The loadcache application loads the memory with following 
+    + the currency codes and its number of decimal places
++ It uses redis database to load the memory
 + The loadcache is a microservice in PYTHON framework.
 > loadcache can be accessed via following techniques
 - [x] **Terminal** (standalone terminal application)
+- [ ] **API** (Application Program Interface)
+- [ ] **EventApi** (Application Program Interface using kafka topic)
 
 
 <a name="prerequiste"/> 
@@ -97,7 +100,7 @@ from an api
 
 > Then inside that fortiate_env type
 
-    conda install redis
+    conda install redis-py
 
 
 <a name="how_to_run"/>
