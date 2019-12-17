@@ -1,2 +1,3 @@
-import redisCurrencyCodeDecimalsInserter
+import redisCurrencyCodeDecimalsInserter, dataElementsSymbols
 redisCurrencyCodeDecimalsInserter.redisInserter()
+dataElementsSymbols.dataElementInserter()
