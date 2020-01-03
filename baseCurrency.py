@@ -2,7 +2,6 @@ import redis
 
 redisClient = redis.StrictRedis(host='localhost', port=6379, db=0)
 currency = {}
-def basecurrency():
+def setBaseCurrency():
     baseCurrency = "356"
-    currency["baseCurrency"] = baseCurrency
-    redisClient.hmset('baseCurrency', currency)
+    redisClient.set('baseCurrency', baseCurrency)

@@ -2,4 +2,4 @@ import redisCurrencyCodeDecimalsInserter, dataElementsSymbols,conversionRate,bas
 redisCurrencyCodeDecimalsInserter.redisInserter()
 dataElementsSymbols.dataElementInserter()
 conversionRate.currrencyConvrsion()
-baseCurrency.basecurrency()
+baseCurrency.setBaseCurrency()
