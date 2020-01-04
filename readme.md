@@ -113,7 +113,7 @@ from an api
 ## How To Run
 + Terminal
 
-        python3 loadInMemory.py
+        python3 loadInMemory.py local
 
 <a name="how_to_access"/>
 

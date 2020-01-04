@@ -1,0 +1,14 @@
+redis
+json5
+jsonschema
+openapi-spec-validator
+pathlib2
+pathtools
+pip-tools
+pkginfo
+kafka-python
+python-dateutil
+python-jsonrpc-server
+requests
+urllib3
+

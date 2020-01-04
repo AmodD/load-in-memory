@@ -1,6 +1,9 @@
 import redis
-
-redisClient = redis.StrictRedis(host='localhost', port=6379, db=0)
+import hostEnv from loadInMemory
+if hostEnv == 'local':
+    redisClient = redis.StrictRedis('localhost', 6379, db=0)
+elif hostEnv == 'docker':
+    redisClient = redis.StrictRedis('redis', 6379, db=0)
 
 currencyCodes = {'784': 2, '971': 2, '008': 2, '051': 2, '532': 2, '973': 2, '032': 2, '036': 2, '533': 2, '944': 2,
                  '977': 2, '052': 2, '050': 2, '975': 2, '048': 3, '108': 0, '060': 2,
