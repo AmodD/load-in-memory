@@ -1,6 +1,10 @@
 import redis
+import hostEnv from loadInMemory
+if hostEnv == 'local':
+    redisClient = redis.StrictRedis('localhost', 6379, db=0)
+elif hostEnv == 'docker':
+    redisClient = redis.StrictRedis('redis', 6379, db=0)
 
-redisClient = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 de000 = {'0100': '!', '0110': '\"', '0120': '#', '0121': '$', '0130': '%', '0200': '&', '0210': '\'', '0220': '('}
 de003se1 = {'00': '!', '01': '\"', '09': '#', '10': '$', '14': '%', '20': '&', '21': '\'', '22': '(', '26': ')',
