@@ -1,9 +1,4 @@
-import redis
-from loadInMemory import hostEnv
-if hostEnv == 'localhost':
-    redisClient = redis.StrictRedis('localhost', 6379, db=0)
-else:
-    redisClient = redis.StrictRedis('redis', 6379, db=0)
+from redisPython import redisClient
 
 currencyCodes = {'784': 2, '971': 2, '008': 2, '051': 2, '532': 2, '973': 2, '032': 2, '036': 2, '533': 2, '944': 2,
                  '977': 2, '052': 2, '050': 2, '975': 2, '048': 3, '108': 0, '060': 2,

@@ -1,9 +1,4 @@
-import redis
-from loadInMemory import hostEnv
-if hostEnv == 'localhost':
-    redisClient = redis.StrictRedis('localhost', 6379, db=0)
-else:
-    redisClient = redis.StrictRedis('redis', 6379, db=0)
+from redisPython import redisClient
 
 de000 = {'0100': '!', '0110': '\"', '0120': '#', '0121': '$', '0130': '%', '0200': '&', '0210': '\'', '0220': '('}
 de003se1 = {'00': '!', '01': '\"', '09': '#', '10': '$', '14': '%', '20': '&', '21': '\'', '22': '(', '26': ')',
@@ -45,6 +40,7 @@ def dataElementInserter():
     # print(redisClient.hgetall('de025'))
     # print(redisClient.hgetall('de049'))
     print('ASCII codes loaded in memory for dataElements 000, 003, 018, 019, 022, 025, 049')
+
 
 if __name__ == '__main__':
     dataElementInserter()

@@ -1,10 +1,12 @@
-from loadInMemory import redisClient
+from redisPython import redisClient
 
-currency = {}
+baseCurrency = "356"
 
 
 def setBaseCurrency():
-    baseCurrency = "356"
-    redisClient.set('baseCurrency', baseCurrency)
+    redisClient.hset('baseCurrency', baseCurrency)
     print("base currency loaded 356")
 
+
+if __name__ == '__main__':
+    setBaseCurrency()
