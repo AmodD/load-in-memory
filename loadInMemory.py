@@ -15,8 +15,10 @@ import baseCurrency
 import conversionRate
 import dataElementsSymbols
 import redisCurrencyCodeDecimalsInserter
+import chpListInserter
 
 redisCurrencyCodeDecimalsInserter.redisInserter(redisClient)
 dataElementsSymbols.dataElementInserter(redisClient)
 conversionRate.currrencyConversion(redisClient)
 baseCurrency.setBaseCurrency(redisClient)
+chpListInserter.chpList(redisClient)
