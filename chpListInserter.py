@@ -14,6 +14,7 @@ def chpList(redisClient):
         #     print(chplist[i])
         for i in range(len(chplist)):
             redisClient.hmset('chp'+str(chplist[i]['ch_CIN']), chplist[i])
+            redisClient.rpush('chplist', 'chp'+str(chplist[i]['ch_CIN']))
         print('chp ids loaded into memory successfully')
 
     except Exception as e:
