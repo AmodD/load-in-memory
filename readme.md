@@ -82,7 +82,7 @@ from an api
 
 ## Getting the code
     
-+ Should open command prompt in the python workspace direcrory
++ Should open command prompt in the python workspace directory
 + If you already have loadcache folder in the python workspace then type    
         
       git pull
