@@ -1,2 +1,5 @@
 redis
+requests
+json5
+jsonschema
 
