@@ -1,3 +1,5 @@
+import logging
+logging.basicConfig(filename='desymbol.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 def dataElementInserter(redisClient):
 
     f01001000 = {'0100': '!', '0110': '\"', '0120': '#', '0121': '$', '0130': '%', '0200': '&', '0210': '\'', '0220': '('}
@@ -38,5 +40,5 @@ def dataElementInserter(redisClient):
     # print(redisClient.hgetall('f01025000'))
     # print(redisClient.hgetall('f01049000'))
     print('ASCII codes loaded in memory for dataElements 000, 003, 018, 019, 022, 025, 049')
-
+    logging.warning('ASCII codes loaded in memory for dataElemnets 000, 003, 018, 019, 022, 025, 049')
 

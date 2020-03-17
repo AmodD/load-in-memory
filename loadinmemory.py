@@ -1,5 +1,8 @@
 import sys
 import redis
+import logging
+
+logging.basicConfig(filename='load-in-memory.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 
 if sys.argv[1] == 'local':
     hostEnv = 'localhost'
@@ -25,3 +28,4 @@ dataElementsSymbols.dataElementInserter(redisClient)
 conversionRate.currrencyConversion(redisClient)
 baseCurrency.setBaseCurrency(redisClient)
 chpListInserter.chpList(redisClient,chpdbservice)
+logging.warning('loaded in memory successfully')
