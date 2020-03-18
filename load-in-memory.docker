@@ -1,3 +1,3 @@
 FROM python-fortiate
 COPY . /usr/src/app
-CMD ["python", "loadInMemory.py", "docker"]
+CMD ["python", "loadinmemory.py", "docker"]
