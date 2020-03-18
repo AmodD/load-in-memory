@@ -1,7 +1,9 @@
-import logging
-logging.basicConfig(filename='conversionRate.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+from flo import fortiatelog
+alertDomain = 'SF'
+fileName = 'coversionRate.py'
 
 def currrencyConversion(redisClient):
+    method = 'currencyConversion'
     converionRate_356 = {"356": 1.0000, "840": 70.9086, "978": 78.5764, "826": 93.3888, "036": 48.3025, "784": 19.3117,
                          "144": 0.390901}
     converionRate_840 = {"356": 0.0141027, "840": 70.9086, "978": 1.12097, "826": 1.32238, "036": 0.700104,
@@ -10,6 +12,4 @@ def currrencyConversion(redisClient):
 
     redisClient.hmset('currencyConverion_356', converionRate_356)
     redisClient.hmset('currencyConverion_840', converionRate_840)
-    print("Conversion rates are loaded into memory")
-    logging.warning('Conversion rates are loaded into memory')
-
+    fortiatelog(alertDomain, 'Conversion rates are loaded into memory', '003', 'info', fileName, method)

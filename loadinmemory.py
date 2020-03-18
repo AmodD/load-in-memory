@@ -1,19 +1,23 @@
 import sys
 import redis
-import logging
+from flo import fortiatelog
+alertDomain = 'TM'
+fileName = 'loadinmemory.py'
 
-logging.basicConfig(filename='load-in-memory.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+def hostEnv():
+    method = 'hostEnv'
+    if sys.argv[1] == 'local':
+        hostEnv = 'localhost'
+        chpdbservice = 'http://localhost:48310/api/chp'
+    elif sys.argv[1] == 'docker':
+        hostEnv = 'redis'
+        chpdbservice = 'http://chp-dbservice/api/chp'
+    else:
+        hostEnv = 'localhost'
+        chpdbservice = 'http://localhost:48310/api/chp'
+    return hostEnv,chpdbservice
 
-if sys.argv[1] == 'local':
-    hostEnv = 'localhost'
-    chpdbservice = 'http://localhost:48310/api/chp'
-elif sys.argv[1] == 'docker':
-    hostEnv = 'redis'
-    chpdbservice = 'http://chp-dbservice/api/chp'
-else:
-    hostEnv = 'localhost'
-    chpdbservice = 'http://localhost:48310/api/chp'
-
+hostEnv, chpdbservice = hostEnv()
 redisClient = redis.StrictRedis(hostEnv, 6379, db=0)
 
 
@@ -28,4 +32,4 @@ dataElementsSymbols.dataElementInserter(redisClient)
 conversionRate.currrencyConversion(redisClient)
 baseCurrency.setBaseCurrency(redisClient)
 chpListInserter.chpList(redisClient,chpdbservice)
-logging.warning('loaded in memory successfully')
+fortiatelog(alertDomain, 'loaded in memory successfully', '001', 'info', fileName)

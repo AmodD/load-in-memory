@@ -1,7 +1,9 @@
-import logging
-logging.basicConfig(filename='desymbol.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
-def dataElementInserter(redisClient):
+from flo import fortiatelog
+alertDomain = 'SF'
+fileName = 'dataElementsSymbols.py'
 
+def dataElementInserter(redisClient):
+    method = 'dataElementInserter'
     f01001000 = {'0100': '!', '0110': '\"', '0120': '#', '0121': '$', '0130': '%', '0200': '&', '0210': '\'', '0220': '('}
     f01003001 = {'00': '!', '01': '\"', '09': '#', '10': '$', '14': '%', '20': '&', '21': '\'', '22': '(', '26': ')',
                 '27': '*', '28': '+', '31': ',', '36': '-', '37': '.', '40': '/', '81': '0', '83': '1', '90': '2'}
@@ -39,6 +41,5 @@ def dataElementInserter(redisClient):
     # print(redisClient.hgetall('f01022002'))
     # print(redisClient.hgetall('f01025000'))
     # print(redisClient.hgetall('f01049000'))
-    print('ASCII codes loaded in memory for dataElements 000, 003, 018, 019, 022, 025, 049')
-    logging.warning('ASCII codes loaded in memory for dataElemnets 000, 003, 018, 019, 022, 025, 049')
 
+    fortiatelog(alertDomain, 'ASCII codes loaded in memory for dataElemnets 000, 003, 018, 019, 022, 025, 049', '002', 'info', fileName, method)

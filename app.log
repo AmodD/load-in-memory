@@ -1,0 +1,2 @@
+root - ERROR - chpListInserter.py - <function chpList at 0x7f62e9bd9e60> {(metl)} {[SF]} [[load-in-memory]] {{error}} ((ERLIMSF005)) [{HTTPConnectionPool(host='localhost', port=48310): Max retries exceeded with url: /api/chp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f62e8b44510>: Failed to establish a new connection: [Errno 111] Connection refused'))}]
+root - ERROR - chpListInserter.py - <function chpList at 0x7f62e9bd9e60> {(metl)} {[SF]} [[load-in-memory]] {{error}} ((ERLIMSF006)) [{chp-dbservice is not responding}]
