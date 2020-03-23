@@ -8,14 +8,14 @@ config = configparser.ConfigParser()
 
 env = environ.get('FORTIATE_ENV')
 config.read('../../CONFIG/'+env)
-redis = config['DEFAULT']['REDIS_HOST']
+redis_host = config['DEFAULT']['REDIS_HOST']
 chp = config['DEFAULT']['APP_CHP']
 
 alertDomain = 'TM'
 fileName = 'loadinmemory.py'
 
-hostEnv, chpdbservice = redis, str(chp) + 'api/chp'
-redisClient = redis.StrictRedis(hostEnv, 6379, db=0)
+chpdbservice = str(chp) + 'api/chp'
+redisClient = redis.StrictRedis(redis_host, 6379, db=0)
 
 
 import baseCurrency
