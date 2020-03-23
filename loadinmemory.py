@@ -1,23 +1,26 @@
 import sys
 import redis
 from flo import fortiatelog
+from os import environ
+import configparser
+
+config = configparser.ConfigParser()
+
+env = environ.get('FORTIATE_ENV')
+if env == 'localhost':
+    config.read('../.env.localhost')
+    redis = config['DEFAULT']['REDIS_HOST']
+    chp = config['DEFAULT']['APP_CHP']
+    
+elif env == 'localdocker':
+    config.read('../.env.localdocker')
+    redis = config['DEFAULT']['REDIS_HOST']
+    chp = config['DEFAULT']['APP_CHP']
+
 alertDomain = 'TM'
 fileName = 'loadinmemory.py'
 
-def hostEnv():
-    method = 'hostEnv'
-    if sys.argv[1] == 'local':
-        hostEnv = 'localhost'
-        chpdbservice = 'http://localhost:48310/api/chp'
-    elif sys.argv[1] == 'docker':
-        hostEnv = 'redis'
-        chpdbservice = 'http://chp-dbservice/api/chp'
-    else:
-        hostEnv = 'localhost'
-        chpdbservice = 'http://localhost:48310/api/chp'
-    return hostEnv,chpdbservice
-
-hostEnv, chpdbservice = hostEnv()
+hostEnv, chpdbservice = redis, str(chp) + 'api/chp'
 redisClient = redis.StrictRedis(hostEnv, 6379, db=0)
 
 
