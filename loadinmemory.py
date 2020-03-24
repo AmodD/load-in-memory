@@ -2,14 +2,12 @@ import sys
 import redis
 from flo import fortiatelog
 from os import environ
-import configparser
+#import configparser
+import os
+#config = configparser.ConfigParser()
 
-config = configparser.ConfigParser()
-
-env = environ.get('FORTIATE_ENV')
-config.read('../../CONFIG/'+env)
-redis_host = config['DEFAULT']['REDIS_HOST']
-chp = config['DEFAULT']['APP_CHP']
+redis_host = os.getenv('REDIS_HOST')
+chp = os.getenv('APP_CHP')
 
 alertDomain = 'TM'
 fileName = 'loadinmemory.py'
