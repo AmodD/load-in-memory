@@ -7,13 +7,14 @@ import os
 #config = configparser.ConfigParser()
 try:
     redis_host = os.getenv('REDIS_HOST')
+    redis_port = os.getenv('REDIS_PORT')
     # redis_host = os.getenv('HOST_IP')
     chp = os.getenv('URL_CHP_DBSERVICE')
     if redis_host == None:
-        print("redis_host is not set")
+        print("redis_host is not se in load-in-memoryt")
         sys.exit(1)
     if chp == None:
-        print("chp is not set")
+        print("chp is not set in load-in-memory")
         sys.exit(1)
 except Exception as e:
     print(e)
@@ -22,8 +23,8 @@ except Exception as e:
 alertDomain = 'TM'
 fileName = 'loadinmemory.py'
 
-chpdbservice = str(chp) + 'api/chp'
-redisClient = redis.StrictRedis(redis_host, 6379, db=0)
+chpdbservice = chp+'api/chp'
+redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
 
 
 import baseCurrency
