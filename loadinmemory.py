@@ -7,6 +7,7 @@ import os
 #config = configparser.ConfigParser()
 
 redis_host = os.getenv('REDIS_HOST')
+# redis_host = os.getenv('HOST_IP')
 chp = os.getenv('APP_CHP')
 
 alertDomain = 'TM'
