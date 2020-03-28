@@ -5,10 +5,19 @@ from os import environ
 #import configparser
 import os
 #config = configparser.ConfigParser()
-
-redis_host = os.getenv('REDIS_HOST')
-# redis_host = os.getenv('HOST_IP')
-chp = os.getenv('APP_CHP')
+try:
+    redis_host = os.getenv('REDIS_HOST')
+    # redis_host = os.getenv('HOST_IP')
+    chp = os.getenv('URL_CHP_DBSERVICE')
+    if redis_host == None:
+        print("redis_host is not set")
+        sys.exit(1)
+    if chp == None:
+        print("chp is not set")
+        sys.exit(1)
+except Exception as e:
+    print(e)
+    sys.exit(1)
 
 alertDomain = 'TM'
 fileName = 'loadinmemory.py'
