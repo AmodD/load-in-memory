@@ -35,7 +35,7 @@ chpdbservice = chp+'api/chp'
 redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
 clients = alarm+'api/clients'
 for client in clients:
-    mid = merchants+'api/'+str(client)
+    mid = merchants+'api/'+client
     fortiatelog(alertDomain, mid, '002', 'warning', fileName)
 
 
