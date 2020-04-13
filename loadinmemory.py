@@ -35,8 +35,9 @@ chpdbservice = chp+'api/chp'
 redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
 client_url = alarm+'api/clients'
 try:
-    req = requests.get(client_url)
-    clients = json.loads(req.text)
+    response = requests.get(client_url)
+    client_json = json.loads(response.text)
+    clients = client_json['payload']['data']
 except Exception as e:
     clients = ''
     fortiatelog(alertDomain, e, '003', 'error', fileName)
