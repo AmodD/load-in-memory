@@ -1,5 +1,7 @@
 import sys
 import redis
+import requests
+
 from flo import fortiatelog
 from os import environ
 #import configparser
@@ -33,10 +35,20 @@ fileName = 'loadinmemory.py'
 
 chpdbservice = chp+'api/chp'
 redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
-clients = alarm+'api/clients'
+client_url = alarm+'api/clients'
+try:
+    clients = requests.get(client_url)
+except Exception as e:
+    clients = ''
+    fortiatelog(alertDomain, e, '003', 'error', fileName)
+    fortiatelog(alertDomain, 'alarm is not responding', '004', 'error', fileName)
+    sys.exit(1)
+
+fortiatelog(alertDomain, clients, '005', 'info', fileName)
+
 for client in clients:
     mid = merchants+'api/'+client
-    fortiatelog(alertDomain, mid, '002', 'warning', fileName)
+    fortiatelog(alertDomain, mid, '002', 'info', fileName)
 
 
 import baseCurrency
