@@ -45,9 +45,9 @@ except Exception as e:
 
 fortiatelog(alertDomain, clients, '005', 'info', fileName)
 
-for client in clients:
-    mid = merchants+'api/'+client
-    fortiatelog(alertDomain, mid, '002', 'info', fileName)
+# for client in clients:
+#     mid = merchants+'api/'+client
+#     fortiatelog(alertDomain, mid, '002', 'info', fileName)
 
 
 import baseCurrency
