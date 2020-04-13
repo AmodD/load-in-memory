@@ -1,17 +1,15 @@
+import json
 import sys
 import redis
 import requests
-
 from flo import fortiatelog
-from os import environ
-#import configparser
 import os
-#config = configparser.ConfigParser()
+
 try:
     redis_host = os.getenv('REDIS_HOST')
     redis_port = os.getenv('REDIS_PORT')
-    # redis_host = os.getenv('HOST_IP')
     chp = os.getenv('URL_CHP_DBSERVICE')
+
     alarm = os.getenv('APP_ALARM')
     merchants = os.getenv('URL_MERCHANTS_DBSERVICE')
     if redis_host is None:
@@ -37,7 +35,8 @@ chpdbservice = chp+'api/chp'
 redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
 client_url = alarm+'api/clients'
 try:
-    clients = requests.get(client_url)
+    req = requests.get(client_url)
+    clients = json.loads(req.text)
 except Exception as e:
     clients = ''
     fortiatelog(alertDomain, e, '003', 'error', fileName)
