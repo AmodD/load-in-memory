@@ -12,16 +12,16 @@ try:
 
     alarm = os.getenv('APP_ALARM')
     merchants = os.getenv('URL_MERCHANTS_DBSERVICE')
-    if redis_host is None:
+    if redis_host == None:
         print("redis_host is not se in load-in-memoryt")
         sys.exit(1)
-    if chp is None:
+    if chp == None:
         print("chp is not set in load-in-memory")
         sys.exit(1)
-    if alarm is None:
+    if alarm == None:
         print("alarm is not set in load-in-memory")
         sys.exit(1)
-    if merchants is None:
+    if merchants == None:
         print("merchants is not set in load-in-memory")
         sys.exit(1)
 except Exception as e:
@@ -31,9 +31,9 @@ except Exception as e:
 alertDomain = 'TM'
 fileName = 'loadinmemory.py'
 
-chpdbservice = chp+'api/chp'
+chpdbservice = chp + 'api/chp'
 redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
-client_url = alarm+'api/clients'
+client_url = alarm + 'api/clients'
 try:
     response = requests.get(client_url)
     client_json = json.loads(response.text)
@@ -60,5 +60,5 @@ redisCurrencyCodeDecimalsInserter.redisInserter(redisClient)
 dataElementsSymbols.dataElementInserter(redisClient)
 conversionRate.currrencyConversion(redisClient)
 baseCurrency.setBaseCurrency(redisClient)
-chpListInserter.chpList(redisClient,chpdbservice)
+chpListInserter.chpList(redisClient, chpdbservice)
 fortiatelog(alertDomain, 'loaded in memory successfully', '001', 'info', fileName)
