@@ -39,7 +39,6 @@ try:
     client_json = json.loads(response.text)
     clients = client_json['payload']['data']
 except Exception as e:
-    clients = ''
     fortiatelog(alertDomain, e, '003', 'error', fileName)
     fortiatelog(alertDomain, 'alarm is not responding', '004', 'error', fileName)
     sys.exit(1)
