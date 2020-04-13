@@ -10,11 +10,19 @@ try:
     redis_port = os.getenv('REDIS_PORT')
     # redis_host = os.getenv('HOST_IP')
     chp = os.getenv('URL_CHP_DBSERVICE')
-    if redis_host == None:
+    alarm = os.getenv('APP_ALARM')
+    merchants = os.getenv('URL_MERCHANTS_DBSERVICE')
+    if redis_host is None:
         print("redis_host is not se in load-in-memoryt")
         sys.exit(1)
-    if chp == None:
+    if chp is None:
         print("chp is not set in load-in-memory")
+        sys.exit(1)
+    if alarm is None:
+        print("alarm is not set in load-in-memory")
+        sys.exit(1)
+    if merchants is None:
+        print("merchants is not set in load-in-memory")
         sys.exit(1)
 except Exception as e:
     print(e)
@@ -25,6 +33,10 @@ fileName = 'loadinmemory.py'
 
 chpdbservice = chp+'api/chp'
 redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
+clients = alarm+'api/clients'
+for client in clients:
+    mid = merchants+'api/'+str(client)
+    fortiatelog(alertDomain, mid, '002', 'warning', fileName)
 
 
 import baseCurrency
