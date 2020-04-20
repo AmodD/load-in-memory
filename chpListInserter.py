@@ -14,8 +14,8 @@ def chpList(redisClient,chpdbservice):
         chplist = responseText['payload']['data']
 
         for i in range(len(chplist)):
-            redisClient.hmset('chp'+str(chplist[i]['ch_CIN']), chplist[i])
-            redisClient.rpush('chplist', 'chp'+str(chplist[i]['ch_CIN']))
+            redisClient.hmset(+str(chplist[i]['ch_CIN']), list_of_chp_ids[i])
+            redisClient.rpush('list_of_chp_ids', str(list_of_chp_ids[i]['ch_CIN']))
 
         fortiatelog(alertDomain, 'chp ids loaded into memory successfully', '004', 'info', fileName, method)
 
