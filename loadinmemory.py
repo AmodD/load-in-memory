@@ -2,6 +2,8 @@ import json
 import sys
 import redis
 import requests
+
+import merchantlistinserter
 from flo import fortiatelog
 import os
 
@@ -9,6 +11,7 @@ try:
     redis_host = os.getenv('REDIS_HOST')
     redis_port = os.getenv('REDIS_PORT')
     chp = os.getenv('URL_CHP_DBSERVICE')
+    merchant = os.getenv('URL_MERCHANTS_DBSERVICE')
 
     # alarm = os.getenv('APP_ALARM')
     # merchants = os.getenv('URL_MERCHANTS_DBSERVICE')
@@ -21,9 +24,9 @@ try:
     # if alarm == None:
     #     print("alarm is not set in load-in-memory")
     #     sys.exit(1)
-    # if merchants == None:
-    #     print("merchants is not set in load-in-memory")
-    #     sys.exit(1)
+    if merchant == None:
+        print("merchants is not set in load-in-memory")
+        sys.exit(1)
 except Exception as e:
     print(e)
     sys.exit(1)
@@ -32,7 +35,11 @@ alertDomain = 'TM'
 fileName = 'loadinmemory.py'
 
 chpdbservice = chp + 'api/chp'
+
+merchantdbservice = merchant + 'api/merchant'
+
 redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
+
 # client_url = alarm + 'api/clients'
 # try:
 #     response = requests.get(client_url)
@@ -61,4 +68,6 @@ dataElementsSymbols.dataElementInserter(redisClient)
 conversionRate.currrencyConversion(redisClient)
 baseCurrency.setBaseCurrency(redisClient)
 chpListInserter.chpList(redisClient, chpdbservice)
+merchantlistinserter.merchantlist(redisClient, merchantdbservice)
+
 fortiatelog(alertDomain, 'loaded in memory successfully', '001', 'info', fileName)
