@@ -51,6 +51,10 @@ chpdbservice = chp + 'api/chp'
 
 merchantdbservice = merchant + 'api/merchant'
 
+print(merchantdbservice)
+
+print(chpdbservice)
+
 redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
 
 import baseCurrency
