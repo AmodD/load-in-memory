@@ -1,4 +1,4 @@
-from flo import fortiatelog
+from fpf.flo import fortiatelog
 fileName = 'baseCurrency.py'
 
 def setBaseCurrency(redisClient):
