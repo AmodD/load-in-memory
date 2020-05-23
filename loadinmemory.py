@@ -28,6 +28,7 @@ fjo.setparameters(percentage=10)
 
 try:
     redis_host = fenv.hostredis
+    redis_port = fenv.redisport
     chp = fenv.hostchpdb
     merchant = fenv.hostmerchantsdb
 
