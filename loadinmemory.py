@@ -4,7 +4,7 @@ import redis
 import requests
 
 import merchantlistinserter
-from flo import fortiatelog
+from fpf.flo import fortiatelog
 import os
 
 try:
@@ -31,7 +31,6 @@ except Exception as e:
     print(e)
     sys.exit(1)
 
-alertDomain = 'TM'
 fileName = 'loadinmemory.py'
 
 chpdbservice = chp + 'api/chp'
@@ -70,4 +69,4 @@ baseCurrency.setBaseCurrency(redisClient)
 chpListInserter.chpList(redisClient, chpdbservice)
 merchantlistinserter.merchantlist(redisClient, merchantdbservice)
 
-fortiatelog(alertDomain, 'loaded in memory successfully', '001', 'info', fileName)
+fortiatelog('loaded in memory successfully', '001', 'info', fileName)

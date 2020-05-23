@@ -1,5 +1,4 @@
-from flo import fortiatelog
-alertDomain = 'SF'
+from fpf.flo import fortiatelog
 fileName = 'coversionRate.py'
 
 def currrencyConversion(redisClient):
@@ -12,4 +11,4 @@ def currrencyConversion(redisClient):
 
     redisClient.hmset('currencyConverion_356', converionRate_356)
     redisClient.hmset('currencyConverion_840', converionRate_840)
-    fortiatelog(alertDomain, 'Conversion rates are loaded into memory', '003', 'info', fileName, method)
+    fortiatelog('Conversion rates are loaded into memory', '003', 'info', fileName, method)
