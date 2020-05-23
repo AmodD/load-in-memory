@@ -8,6 +8,7 @@ fileName = 'merchantlistinserter.py'
 def merchantlist(redisClient,merchantdbservice):
     method = 'merchantlist'
     try:
+        print(merchantdbservice)
         response = requests.get(merchantdbservice)
         responseText = json.loads(response.text)
         merchantlist = responseText['payload']['data']
