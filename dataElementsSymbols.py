@@ -1,5 +1,4 @@
-from flo import fortiatelog
-alertDomain = 'SF'
+from fpf.flo import fortiatelog
 fileName = 'dataElementsSymbols.py'
 
 def dataElementInserter(redisClient):
@@ -42,4 +41,4 @@ def dataElementInserter(redisClient):
     # print(redisClient.hgetall('f01025000'))
     # print(redisClient.hgetall('f01049000'))
 
-    fortiatelog(alertDomain, 'ASCII codes loaded in memory for dataElemnets 000, 003, 018, 019, 022, 025, 049', '002', 'info', fileName, method)
+    fortiatelog('ASCII codes loaded in memory for dataElemnets 000, 003, 018, 019, 022, 025, 049', '002', 'info', fileName, method)

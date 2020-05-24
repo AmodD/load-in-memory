@@ -1,8 +1,7 @@
 import requests
 import json
 import sys
-from flo import fortiatelog
-alertDomain = 'SF'
+from fpf.flo import fortiatelog
 fileName = 'chpListInserter.py'
 
 
@@ -17,10 +16,10 @@ def chpList(redisClient,chpdbservice):
             redisClient.hmset("chp"+str(chplist[i]['ch_CIN']), chplist[i])
             redisClient.rpush('list_of_chp_id', str(chplist[i]['ch_CIN']))
 
-        fortiatelog(alertDomain, 'chp ids loaded into memory successfully', '004', 'info', fileName, method)
+        fortiatelog('chp ids loaded into memory successfully', '004', 'info', fileName, method)
 
     except Exception as e:
-        fortiatelog(alertDomain, e, '005', 'error', fileName, method)
-        fortiatelog(alertDomain, 'chp-dbservice is not responding', '006', 'error', fileName, method)
+        fortiatelog(e, '005', 'error', fileName, method)
+        fortiatelog('chp-dbservice is not responding', '006', 'error', fileName, method)
         sys.exit(1)
 

@@ -1,10 +1,9 @@
-from flo import fortiatelog
-alertDomain = 'SF'
+from fpf.flo import fortiatelog
 fileName = 'baseCurrency.py'
 
 def setBaseCurrency(redisClient):
     method = 'setBaseCurrency'
     baseCurrency = "356"
     redisClient.set('baseCurrency', baseCurrency)
-    fortiatelog(alertDomain, 'base currency loaded 356', '007', 'info', fileName, method)
+    fortiatelog('base currency loaded 356', '007', 'info', fileName, method)
 
