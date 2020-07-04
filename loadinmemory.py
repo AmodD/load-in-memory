@@ -62,6 +62,8 @@ import conversionRate
 import dataElementsSymbols
 import redisCurrencyCodeDecimalsInserter
 import chpListInserter
+import processingCodeImageEnc
+import mccImageEnc
 
 redisCurrencyCodeDecimalsInserter.redisInserter(redisClient)
 dataElementsSymbols.dataElementInserter(redisClient)
@@ -69,5 +71,7 @@ conversionRate.currrencyConversion(redisClient)
 baseCurrency.setBaseCurrency(redisClient)
 chpListInserter.chpList(redisClient, chpdbservice)
 merchantlistinserter.merchantlist(redisClient, merchantdbservice)
+processingCodeImageEnc.processingCodeInserter(redisClient)
+mccImageEnc.mccInserter(redisClient)
 
 fortiatelog('loaded in memory successfully', '001', 'info', fileName)
