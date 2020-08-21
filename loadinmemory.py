@@ -35,10 +35,10 @@ try:
     if redis_host == None:
         print("redis_host is not se in load-in-memoryt")
         sys.exit(1)
-    if consumerdb == None:
+    if consumersdb == None:
         print("consumer is not set in load-in-memory")
         sys.exit(1)
-    if merchantdb == None:
+    if merchantsdb == None:
         print("merchants is not set in load-in-memory")
         sys.exit(1)
 except Exception as e:
