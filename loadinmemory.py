@@ -29,17 +29,17 @@ fjo.setparameters(percentage=10)
 try:
     redis_host = fenv.hostredis
     redis_port = fenv.redisport
-    chp = fenv.hostchpdb
-    merchant = fenv.hostmerchantsdb
+    consumersdb = fenv.hostconsumersdb
+    merchantsdb = fenv.hostmerchantsdb
 
     if redis_host == None:
-        print("redis_host is not se in load-in-memoryt")
+        print("redis_host is not set in fenv")
         sys.exit(1)
-    if chp == None:
-        print("chp is not set in load-in-memory")
+    if consumersdb == None:
+        print("consumer-dbservice is not set in fenv")
         sys.exit(1)
-    if merchant == None:
-        print("merchants is not set in load-in-memory")
+    if merchantsdb == None:
+        print("merchants-dbservice is not set in fenv")
         sys.exit(1)
 except Exception as e:
     print(e)
@@ -47,13 +47,13 @@ except Exception as e:
 
 fileName = 'loadinmemory.py'
 
-chpdbservice = chp + 'api/chp'
+consumersdbservice = consumersdb + 'api/consumers'
 
-merchantdbservice = merchant + 'api/merchant'
+merchantsdbservice = merchantsdb + 'api/merchants'
 
-print(merchantdbservice)
+print(merchantsdbservice)
 
-print(chpdbservice)
+print(consumersdbservice)
 
 redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
 
@@ -61,7 +61,7 @@ import baseCurrency
 import conversionRate
 import dataElementsSymbols
 import redisCurrencyCodeDecimalsInserter
-import chpListInserter
+import consumerListInserter
 import processingCodeImageEnc
 import mccImageEnc
 
@@ -69,8 +69,8 @@ redisCurrencyCodeDecimalsInserter.redisInserter(redisClient)
 dataElementsSymbols.dataElementInserter(redisClient)
 conversionRate.currrencyConversion(redisClient)
 baseCurrency.setBaseCurrency(redisClient)
-chpListInserter.chpList(redisClient, chpdbservice)
-merchantlistinserter.merchantlist(redisClient, merchantdbservice)
+consumerListInserter.consumerList(redisClient, consumersdbservice)
+merchantlistinserter.merchantlist(redisClient, merchantsdbservice)
 processingCodeImageEnc.processingCodeInserter(redisClient)
 mccImageEnc.mccInserter(redisClient)
 
