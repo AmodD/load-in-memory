@@ -33,13 +33,13 @@ try:
     merchantsdb = fenv.hostmerchantsdb
 
     if redis_host == None:
-        print("redis_host is not se in load-in-memoryt")
+        print("redis_host is not set in fenv")
         sys.exit(1)
     if consumersdb == None:
-        print("consumer is not set in load-in-memory")
+        print("consumer-dbservice is not set in fenv")
         sys.exit(1)
     if merchantsdb == None:
-        print("merchants is not set in load-in-memory")
+        print("merchants-dbservice is not set in fenv")
         sys.exit(1)
 except Exception as e:
     print(e)
@@ -47,9 +47,9 @@ except Exception as e:
 
 fileName = 'loadinmemory.py'
 
-consumersdbservice = consumersdb + 'api/consumer'
+consumersdbservice = consumersdb + 'api/consumers'
 
-merchantsdbservice = merchantsdb + 'api/merchant'
+merchantsdbservice = merchantsdb + 'api/merchants'
 
 print(merchantsdbservice)
 
