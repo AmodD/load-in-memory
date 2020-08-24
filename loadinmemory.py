@@ -61,7 +61,7 @@ import baseCurrency
 import conversionRate
 import dataElementsSymbols
 import redisCurrencyCodeDecimalsInserter
-import consumerListInserter
+import consumersListInserter
 import processingCodeImageEnc
 import mccImageEnc
 
