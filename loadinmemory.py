@@ -70,7 +70,7 @@ dataElementsSymbols.dataElementInserter(redisClient)
 conversionRate.currrencyConversion(redisClient)
 baseCurrency.setBaseCurrency(redisClient)
 consumersListInserter.consumersList(redisClient, consumersdbservice)
-merchantlistinserter.merchantlist(redisClient, merchantsdbservice)
+merchantlistinserter.Listmerchants(redisClient, merchantsdbservice)
 processingCodeImageEnc.processingCodeInserter(redisClient)
 mccImageEnc.mccInserter(redisClient)
 

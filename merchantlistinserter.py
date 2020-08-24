@@ -5,18 +5,18 @@ from fpf.flo import fortiatelog
 fileName = 'merchantlistinserter.py'
 
 
-def merchantlist(redisClient,merchantdbservice):
+def Listmerchants(redisClient,merchantsdbservice):
     method = 'merchantlist'
     try:
-        print(merchantdbservice)
-        response = requests.get(merchantdbservice)
+        print(merchantsdbservice)
+        response = requests.get(merchantsdbservice)
         responseText = json.loads(response.text)
-        merchantlist = responseText['payload']['data']
-        print(len(merchantlist))
+        merchantslist = responseText['payload']['data']
+        print(len(merchantslist))
 
-        for i in range(len(merchantlist)):
-            redisClient.hmset("merchant" + str(merchantlist[i]['MHTID']), merchantlist[i])
-            redisClient.rpush('list_of_merchant_id', str(merchantlist[i]['MHTID']))
+        for i in range(len(merchantslist)):
+            redisClient.hmset("merchant" + str(merchantslist[i]['MHTID']), merchantslist[i])
+            redisClient.rpush('list_of_merchant_id', str(merchantslist[i]['MHTID']))
 
         fortiatelog('merchant ids loaded into memory successfully', '004', 'info', fileName, method)
 
