@@ -2,10 +2,10 @@ import requests
 import json
 import sys
 from fpf.flo import fortiatelog
-fileName = 'consumerListInserter.py'
+fileName = 'consumersListInserter.py'
 
 def consumersList(redisClient,consumersdbservice):
-    method = consumerList
+    method = consumersList
     try:
         response = requests.get(consumersdbservice)
         responseText = json.loads(response.text)
