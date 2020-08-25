@@ -12,7 +12,7 @@ def Listmerchants(redisClient,merchantsdbservice):
         response = requests.get(merchantsdbservice)
         responseText = json.loads(response.text)
         merchantslist = responseText['payload']['data']
-        print(merchantlist)
+        print(merchantslist)
         print(len(merchantslist))
 
         for i in range(len(merchantslist)):
