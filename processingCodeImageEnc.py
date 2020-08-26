@@ -19,6 +19,6 @@ def processingCodeInserter(redisClient):
 
     redisClient.hmset('f01003000', f01003000)
 
-    # print(redisClient.hgetall('f01003000'))
+    print(redisClient.hgetall('f01003000'))
 
     fortiatelog('color codes loaded in memory for dataElement 003', '002', 'info', fileName, method)
