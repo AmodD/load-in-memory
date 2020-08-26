@@ -74,4 +74,4 @@ merchantlistinserter.Listmerchants(redisClient, merchantsdbservice)
 #processingCodeImageEnc.processingCodeInserter(redisClient)
 #mccImageEnc.mccInserter(redisClient)
 
-fortiatelog('loaded in memory successfully', '001', 'info', fileName)
+fortiatelog('loaded in memory successfully', '001', 'info', fileName, '')
