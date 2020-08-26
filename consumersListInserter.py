@@ -12,8 +12,8 @@ def consumersList(redisClient,consumersdbservice):
         consumerslist = responseText['payload']['data']
 
         for i in range(len(consumerslist)):
-            redisClient.hmset("consumer"+str(consumerslist[i]['pan']), consumerslist[i])
-            redisClient.rpush('list_of_consumers_id', str(consumerslist[i]['pan']))
+            redisClient.hmset("consumer"+str(consumerslist[i]['id']), consumerslist[i])
+            redisClient.rpush('list_of_consumers_id', str(consumerslist[i]['id']))
 
         fortiatelog('consumer ids loaded into memory successfully', '004', 'info', fileName, method)
 

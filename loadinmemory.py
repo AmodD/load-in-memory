@@ -16,15 +16,17 @@ filename = 'loadinmemory.py'
 microservicename = 'loadinmemory'
 microserviceacronym = 'LIM'
 
-flo.setmicroservice(microservicename, microserviceacronym)
-fjo.setmicroservice(microservicename, microserviceacronym)
-fenv.setmicroservice(microservicename, microserviceacronym)
-
 flo.fortiatelog('Starting ' + microservicename, '700', 'info', filename, '')
 
+try: 
+    flo.setmicroservice(microservicename, microserviceacronym)
+    fjo.setmicroservice(microservicename, microserviceacronym)
+    fenv.setmicroservice(microservicename, microserviceacronym)
+except Exception as e:
+    flo.fortiatelog(e, '100', 'error', filename, '')
+    sys.exit(1)
+
 fjo.setparameters(percentage=10)
-
-
 
 try:
     redis_host = fenv.hostredis
