@@ -10,6 +10,7 @@ def consumersList(redisClient,consumersdbservice):
         response = requests.get(consumersdbservice)
         responseText = json.loads(response.text)
         consumerslist = responseText['payload']['data']
+        print(consumerslist)
 
         for i in range(len(consumerslist)):
             redisClient.hmset("consumer"+str(consumerslist[i]['id']), consumerslist[i])
