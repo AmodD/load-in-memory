@@ -11,14 +11,15 @@ def consumersList(redisClient,consumersdbservice):
         responseText = json.loads(response.text)
         consumerslist = responseText['payload']['data']
         print(consumerslist)
+        consumersidlist = "list_of_consumers_id" 
 
         for i in range(len(consumerslist)):
             print(len(consumerslist))
             redisClient.hmset("consumer"+str(consumerslist[i]['id']), consumerslist[i])
-            redisClient.sadd("list_of_consumers_id", str(consumerslist[i]['id']))
+            redisClient.sadd(consumersidlist, str(consumerslist[i]['id']))
 
-        print(redisClient.scard(list_of_consumers_id))
-        print(redisClient.smembers(list_of_consumers_id))
+        #print(redisClient.scard(list_of_consumers_id))
+        #print(redisClient.smembers(list_of_consumers_id))
         fortiatelog('consumer ids loaded into memory successfully', '004', 'info', fileName, method)
 
     except Exception as e:

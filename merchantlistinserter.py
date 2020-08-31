@@ -12,12 +12,13 @@ def Listmerchants(redisClient,merchantsdbservice):
         response = requests.get(merchantsdbservice)
         responseText = json.loads(response.text)
         merchantslist = responseText['payload']['data']
-        print(merchantslist)
+        #print(merchantslist)
         print(len(merchantslist))
+        midlist = "list_of_merchant_id"
 
         for i in range(len(merchantslist)):
             redisClient.hmset("merchant" + str(merchantslist[i]['id']), merchantslist[i])
-            redisClient.sadd('list_of_merchant_id', str(merchantslist[i]['mid']))
+            redisClient.sadd(midlist, str(merchantslist[i]['mid']))
 
         fortiatelog('merchant ids loaded into memory successfully', '004', 'info', fileName, method)
 
