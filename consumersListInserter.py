@@ -16,8 +16,6 @@ def consumersList(redisClient,consumersdbservice):
             redisClient.hmset("consumer"+str(consumerslist[i]['id']), consumerslist[i])
             redisClient.sadd('list_of_consumers_id', "consumer"+str(consumerslist[i]['id']))
 
-        #print(redisClient.scard(list_of_consumers_id))
-        #print(redisClient.smembers(list_of_consumers_id))
         fortiatelog('consumer ids loaded into memory successfully', '004', 'info', fileName, method)
 
     except Exception as e:
