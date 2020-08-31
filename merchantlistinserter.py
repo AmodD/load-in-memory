@@ -16,8 +16,8 @@ def Listmerchants(redisClient,merchantsdbservice):
         print(len(merchantslist))
 
         for i in range(len(merchantslist)):
-            redisClient.hmset("merchant" + str(merchantslist[i]['tid']), merchantslist[i])
-            redisClient.rpush('list_of_merchant_id', str(merchantslist[i]['tid']))
+            redisClient.hmset("merchant" + str(merchantslist[i]['id']), merchantslist[i])
+            redisClient.sadd('list_of_merchant_id', str(merchantslist[i]['mid']))
 
         fortiatelog('merchant ids loaded into memory successfully', '004', 'info', fileName, method)
 
