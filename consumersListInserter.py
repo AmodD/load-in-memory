@@ -10,7 +10,6 @@ def consumersList(redisClient,consumersdbservice):
         response = requests.get(consumersdbservice)
         responseText = json.loads(response.text)
         consumerslist = responseText['payload']['data']
-        print(consumerslist)
 
         for i in range(len(consumerslist)):
             print(len(consumerslist))
