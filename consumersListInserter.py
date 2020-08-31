@@ -14,7 +14,7 @@ def consumersList(redisClient,consumersdbservice):
         for i in range(len(consumerslist)):
             print(len(consumerslist))
             redisClient.hmset("consumer"+str(consumerslist[i]['id']), consumerslist[i])
-            redisClient.rpush('list_of_consumers_id', str(consumerslist[i]['id']))
+            redisClient.sadd('list_of_consumers_id', str(consumerslist[i]['id']))
 
         #print(redisClient.scard(list_of_consumers_id))
         #print(redisClient.smembers(list_of_consumers_id))
