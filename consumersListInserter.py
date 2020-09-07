@@ -14,7 +14,8 @@ def consumersList(redisClient,consumersdbservice):
         for i in range(len(consumerslist)):
             print(len(consumerslist))
             redisClient.hmset("consumer"+str(consumerslist[i]['id']), consumerslist[i])
-            redisClient.sadd('list_of_consumers', "consumer"+str(consumerslist[i]['id']))
+#            redisClient.sadd('list_of_consumers', "consumer"+str(consumerslist[i]['id']))
+            redisClient.sadd('list_of_consumers', str(consumerslist[i]['id']))
 
         fortiatelog('consumer ids loaded into memory successfully', '004', 'info', fileName, method)
 
