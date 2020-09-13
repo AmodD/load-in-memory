@@ -6,7 +6,7 @@ fileName = 'mccImageEnc.py'
 def mccInserter(redisClient):
     method = 'mccInserter'
 
-    f01018000 = {'3072': [(16, 13), '0000ff'],
+    f100001018000 = {'3072': [(16, 13), '0000ff'],
                  '3351': [(16, 13), '808080'],
                  '3352': [(16, 13), '00ff00'],
                  '3353': [(16, 13), '000080'],
@@ -828,9 +828,9 @@ def mccInserter(redisClient):
                  '6011': [(22, 23), '']
                  }
 
-    redisClient.hmset('f01018000', f01018000)
+    redisClient.hmset('f100001018000', f100001018000)
 
-    # print(redisClient.hgetall('f01018000'))
+    # print(redisClient.hgetall('f100001018000'))
 
     fortiatelog('color codes loaded in memory for dataElement 018', '002', 'info', fileName, method)
     
