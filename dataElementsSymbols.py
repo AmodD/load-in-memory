@@ -1,6 +1,7 @@
 from fpf.flo import fortiatelog
 fileName = 'dataElementsSymbols.py'
 
+
 def dataElementInserter(redisClient):
     method = 'dataElementInserter'
     f100001000000 = {'0100': '!', '0110': '\"', '0120': '#', '0121': '$', '0130': '%', '0200': '&', '0210': '\'', '0220': '('}
@@ -30,15 +31,5 @@ def dataElementInserter(redisClient):
     redisClient.hmset('f100001022002', f100001022002)
     redisClient.hmset('f100001025000', f100001025000)
     redisClient.hmset('f100001049000', f100001049000)
-    # print(redisClient.hgetall('f100001000000'))
-    # print(redisClient.hgetall('f100001003001'))
-    # print(redisClient.hgetall('f100001003002'))
-    # print(redisClient.hgetall('f100001003003'))
-    # print(redisClient.hgetall('f100001018000'))
-    # print(redisClient.hgetall('f100001019000'))
-    # print(redisClient.hgetall('f100001022001'))
-    # print(redisClient.hgetall('f100001022002'))
-    # print(redisClient.hgetall('f100001025000'))
-    # print(redisClient.hgetall('f100001049000'))
 
     fortiatelog('ASCII codes loaded in memory for dataElemnets 000, 003, 018, 019, 022, 025, 049', '002', 'info', fileName, method)

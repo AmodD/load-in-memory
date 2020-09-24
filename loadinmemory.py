@@ -1,15 +1,18 @@
-import json
 import sys
 import redis
-import requests
-import os
 
 import merchantlistinserter
+import basecurrency
+import conversionrate
+import dataElementsSymbols
+import currencycodeinserter
+import consumerslistinserter
+import processingcodeinserter
+import mcccodeinserter
 
 from fpf import fenv
 from fpf import flo
 from fpf import fjo
-from fpf import fmq
 from fpf.flo import fortiatelog
 
 filename = 'loadinmemory.py'
@@ -18,7 +21,7 @@ microserviceacronym = 'LIM'
 
 flo.fortiatelog('Starting ' + microservicename, '700', 'info', filename, '')
 
-try: 
+try:
     flo.setmicroservice(microservicename, microserviceacronym)
     fjo.setmicroservice(microservicename, microserviceacronym)
     fenv.setmicroservice(microservicename, microserviceacronym)
@@ -34,46 +37,36 @@ try:
     consumersdb = fenv.hostconsumersdb
     merchantsdb = fenv.hostmerchantsdb
 
-    if redis_host == None:
+    if redis_host is None:
         print("redis_host is not set in fenv")
         sys.exit(1)
-    if consumersdb == None:
+    if consumersdb is None:
         print("consumer-dbservice is not set in fenv")
         sys.exit(1)
-    if merchantsdb == None:
+    if merchantsdb is None:
         print("merchants-dbservice is not set in fenv")
         sys.exit(1)
 except Exception as e:
     print(e)
     sys.exit(1)
 
-fileName = 'loadinmemory.py'
-
 consumersdbservice = consumersdb + 'api/consumers'
 
 merchantsdbservice = merchantsdb + 'api/merchants'
 
-print(merchantsdbservice)
+redisClient = redis.StrictRedis(redis_host, redis_port)
 
-print(consumersdbservice)
+basecurrency.setbasecurrency(redisClient)
+currencycodeinserter.loadcurrencycodes(redisClient)
+conversionrate.loadcurrencyconversionrates(redisClient)
 
-redisClient = redis.StrictRedis(redis_host, redis_port, db=0)
+consumerslistinserter.loadconsumerslist(redisClient, consumersdbservice)
 
-import baseCurrency
-import conversionRate
-import dataElementsSymbols
-import redisCurrencyCodeDecimalsInserter
-import consumersListInserter
-import processingCodeImageEnc
-import mccImageEnc
+merchantlistinserter.loadmerchantslist(redisClient, merchantsdbservice)
 
-redisCurrencyCodeDecimalsInserter.redisInserter(redisClient)
 dataElementsSymbols.dataElementInserter(redisClient)
-conversionRate.currrencyConversion(redisClient)
-baseCurrency.setBaseCurrency(redisClient)
-consumersListInserter.consumersList(redisClient, consumersdbservice)
-merchantlistinserter.Listmerchants(redisClient, merchantsdbservice)
-#processingCodeImageEnc.processingCodeInserter(redisClient)
-#mccImageEnc.mccInserter(redisClient)
 
-fortiatelog('loaded in memory successfully', '001', 'info', fileName, '')
+processingcodeinserter.processingcodepositioninserter(redisClient)
+mcccodeinserter.loadmcccodes(redisClient)
+
+fortiatelog('All tables loaded in memory successfully', '001', 'info', filename, '')
