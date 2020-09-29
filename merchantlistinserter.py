@@ -5,7 +5,7 @@ from fpf.flo import fortiatelog
 fileName = 'merchantlistinserter.py'
 
 
-def loadmerchantslist(redisClient, str(getMerchants)):
+def loadmerchantslist(redisClient, getMerchants):
     method = 'loadmerchantslist'
     try:
         response = requests.get(getMerchants)
