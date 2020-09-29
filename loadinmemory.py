@@ -1,12 +1,12 @@
 import sys
 import redis
 
-import merchantlistinserter
 import basecurrency
 import conversionrate
 import dataElementsSymbols
 import currencycodeinserter
 import consumerslistinserter
+import merchantlistinserter
 import processingcodeinserter
 import mcccodeinserter
 
@@ -40,6 +40,9 @@ try:
     if redis_host is None:
         print("redis_host is not set in fenv")
         sys.exit(1)
+    if redis_port is None:
+        print("redis_port is not set in fenv")
+        sys.exit(1)
     if consumersdb is None:
         print("consumer-dbservice is not set in fenv")
         sys.exit(1)
@@ -52,9 +55,15 @@ except Exception as e:
 
 consumersdbservice = consumersdb + 'api/consumers'
 
-merchantsdbservice = merchantsdb + 'api/merchants'
+getMerchants = merchantsdb + 'api/merchants'
+
+getTerminals = merchantsdb + 'api/terminals'
+
+print(getTerminals)
 
 redisClient = redis.StrictRedis(redis_host, redis_port)
+
+print(redisClient)
 
 basecurrency.setbasecurrency(redisClient)
 currencycodeinserter.loadcurrencycodes(redisClient)
@@ -62,7 +71,9 @@ conversionrate.loadcurrencyconversionrates(redisClient)
 
 consumerslistinserter.loadconsumerslist(redisClient, consumersdbservice)
 
-merchantlistinserter.loadmerchantslist(redisClient, merchantsdbservice)
+merchantlistinserter.loadmerchantslist(redisClient, getMerchants)
+
+merchantlistinserter.loadterminalslist(redisClient, getTerminals)
 
 dataElementsSymbols.dataElementInserter(redisClient)
 
