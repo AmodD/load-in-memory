@@ -59,11 +59,7 @@ getMerchants = merchantsdb + 'api/merchants'
 
 getTerminals = merchantsdb + 'api/terminals'
 
-print(getTerminals)
-
 redisClient = redis.StrictRedis(redis_host, redis_port)
-
-print(redisClient)
 
 basecurrency.setbasecurrency(redisClient)
 currencycodeinserter.loadcurrencycodes(redisClient)
