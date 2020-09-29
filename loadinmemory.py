@@ -67,7 +67,7 @@ conversionrate.loadcurrencyconversionrates(redisClient)
 
 consumerslistinserter.loadconsumerslist(redisClient, consumersdbservice)
 
-merchantlistinserter.loadmerchantslist(redisClient, getMerchants)
+merchantlistinserter.loadmerchantslist(redisClient, str(getMerchants))
 
 merchantlistinserter.loadterminalslist(redisClient, getTerminals)
 
