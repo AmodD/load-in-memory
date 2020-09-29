@@ -14,7 +14,7 @@ def loadmerchantslist(redisClient, getMerchants):
 
         print(merchantslist)
 
-        i = 0
+        i = 1
         while i < len(merchantslist):
             print("inside for loop")
             print(i)
