@@ -57,7 +57,11 @@ consumersdbservice = consumersdb + 'api/consumers'
 
 getMerchants = merchantsdb + 'api/merchants'
 
+print(getMerchants)
+
 getTerminals = merchantsdb + 'api/terminals'
+
+print(getTerminals)
 
 redisClient = redis.StrictRedis(redis_host, redis_port)
 

@@ -12,6 +12,8 @@ def loadmerchantslist(redisClient, getMerchants):
         response_text = json.loads(response.text)
         merchantslist = response_text['payload']['data']
 
+        print(merchantslist)
+
         for key in range(len(merchantslist)):
             redisClient.hmset("merchant" + str(merchantslist[key]['id']), str(merchantslist[key]))
             redisClient.sadd('list_of_merchants', str(merchantslist[key]['id']))
