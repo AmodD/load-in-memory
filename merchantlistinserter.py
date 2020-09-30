@@ -12,16 +12,9 @@ def loadmerchantslist(redisClient, getMerchants):
         response_text = json.loads(response.text)
         merchantslist = response_text['payload']['data']
 
-        print(merchantslist)
-
-        i = 1
-        while i < len(merchantslist):
-            print("inside for loop")
-            print(i)
-            print(merchantslist[i])
-            redisClient.hmset("merchant" + str(merchantslist[i]['id']), merchantslist[i])
-            redisClient.sadd('list_of_merchants', str(merchantslist[i]['id']))
-            i += 1
+        for objects in range(len(merchantslist)):
+            redisClient.hmset("merchant" + str(merchantslist[objects]['id']), merchantslist[objects])
+            redisClient.sadd('list_of_merchants', str(merchantslist[objects]['id']))
 
         fortiatelog('merchant ids loaded into memory successfully', '004', 'info', fileName, method)
 
@@ -38,11 +31,9 @@ def loadterminalslist(redisClient,getTerminals):
         terminalslist = response_text['payload']['data']
         print(terminalslist)
 
-        i = 0
-        while i < len(terminalslist):
-            redisClient.hmset("terminal" + str(terminalslist[i]['id']), terminalslist[i])
-            redisClient.sadd('list_of_terminals', str(terminalslist[i]['id']))
-            i += 1
+        for objects in range(len(terminalslist)):
+            redisClient.hmset("terminal" + str(terminalslist[objects]['id']), terminalslist[objects])
+            redisClient.sadd('list_of_terminals', str(terminalslist[objects]['id']))
 
         fortiatelog('terminal ids loaded into memory successfully', '005', 'info', fileName, method)
 
