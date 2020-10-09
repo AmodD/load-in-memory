@@ -1,5 +1,11 @@
-def redisInserter(redisClient):
-    f01049000 = {'784': 2, '971': 2, '008': 2, '051': 2, '532': 2, '973': 2, '032': 2, '036': 2, '533': 2, '944': 2,
+'''
+This module creates a redis list for currency code and its exponent. Any microservice can quickly get the curreny and
+exponent by referrng this redis list
+'''
+
+
+def loadcurrencycodes(redisClient):
+    f100001049000 = {'784': 2, '971': 2, '008': 2, '051': 2, '532': 2, '973': 2, '032': 2, '036': 2, '533': 2, '944': 2,
                  '977': 2, '052': 2, '050': 2, '975': 2, '048': 3, '108': 0, '060': 2,
                  '096': 2, '068': 2, '984': 2, '986': 2, '044': 2, '064': 2, '072': 2, '933': 2, '084': 2, '124': 2,
                  '976': 2, '947': 2, '756': 2, '948': 2, '990': 4, '152': 0, '156': 2,
@@ -20,6 +26,8 @@ def redisInserter(redisClient):
                  '860': 2, '928': 2, '704': 0, '548': 0, '882': 2, '950': 0, '951': 2, '952': 0, '953': 0, '886': 2,
                  '710': 2, '967': 2, '932': 2}
 
-    redisClient.hmset('currencyCodeMapping', f01049000)
-    # print(redisClient.hgetall('currencyCodeMapping'))
+
+    redisClient.hmset('currencycodeexponentlist', f100001049000)
+    redisClient.hmset('100001049000', f100001049000)
+
     print("Currency codes and number of decimal places loaded in memory")
