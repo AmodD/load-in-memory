@@ -5,7 +5,7 @@ import basecurrency
 import conversionrate
 import dataElementsSymbols
 import currencycodeinserter
-import consumerslistinserter
+# import consumerslistinserter
 import merchantlistinserter
 import processingcodeinserter
 import mcccodeinserter
@@ -53,7 +53,7 @@ except Exception as e:
     print(e)
     sys.exit(1)
 
-consumersdbservice = consumersdb + 'api/consumers'
+# consumersdbservice = consumersdb + 'api/consumers'
 
 getMerchants = merchantsdb + 'api/merchants'
 
@@ -69,7 +69,7 @@ basecurrency.setbasecurrency(redisClient)
 currencycodeinserter.loadcurrencycodes(redisClient)
 conversionrate.loadcurrencyconversionrates(redisClient)
 
-consumerslistinserter.loadconsumerslist(redisClient, consumersdbservice)
+# consumerslistinserter.loadconsumerslist(redisClient, consumersdbservice)
 
 merchantlistinserter.loadmerchantslist(redisClient, getMerchants)
 

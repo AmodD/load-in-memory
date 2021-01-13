@@ -8,10 +8,10 @@ fileName = 'merchantlistinserter.py'
 def loadmerchantslist(redisClient, getMerchants):
     method = 'loadmerchantslist'
     try:
-        response = requests.get(getMerchants)
+        response = requests.get(getMerchants,verify=False,timeout=None)
         response_text = json.loads(response.text)
         merchantslist = response_text['payload']['data']
-
+        print(len(merchantslist))
         for objects in range(len(merchantslist)):
             redisClient.hmset("merchant" + str(merchantslist[objects]['id']), merchantslist[objects])
             redisClient.sadd('list_of_merchants', str(merchantslist[objects]['id']))
@@ -26,7 +26,7 @@ def loadmerchantslist(redisClient, getMerchants):
 def loadterminalslist(redisClient,getTerminals):
     method = 'loadterminalslist'
     try:
-        response = requests.get(getTerminals)
+        response = requests.get(getTerminals,verify=False,timeout=None)
         response_text = json.loads(response.text)
         terminalslist = response_text['payload']['data']
         print(terminalslist)

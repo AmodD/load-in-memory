@@ -14,7 +14,7 @@ Requires following parameters as input
     """
     method = 'consumerslist'
     try:
-        response = requests.get(consumersdbservice)
+        response = requests.get(consumersdbservice,verify=False,timeout=120)
         response_text = json.loads(response.text)
         consumers_list = response_text['payload']['data']
 
