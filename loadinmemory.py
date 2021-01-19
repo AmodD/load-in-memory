@@ -9,6 +9,11 @@ import currencycodeinserter
 import merchantlistinserter
 import processingcodeinserter
 import mcccodeinserter
+from bidashboardinserter import loadpayment, loadactiveaccounts, loadtransaction, loaddispute, loadlistinstruments, \
+    loadlistinstrumentclassifierupi, loadlistinstrumentclassifiercredit, loadlistinstrumentclassifierdebit, \
+    loadlistinstrumentclassifierneft, loaddailyaverageriskscore, loaddailyavergaecompliancescore, loadpayments, \
+    loadtransactions, loadlistproducts, loadproductclassifierlist, loadlistdatacashbackissued, loadlistdatacashbackused, \
+    loadlistdatapremiumissued, loadlistdatapremiumused, loadlistdatastandardissued, loadlistdatastandardused
 
 from fpf import fenv
 from fpf import flo
@@ -70,6 +75,27 @@ currencycodeinserter.loadcurrencycodes(redisClient)
 conversionrate.loadcurrencyconversionrates(redisClient)
 
 # consumerslistinserter.loadconsumerslist(redisClient, consumersdbservice)
+loadpayment(redisClient)
+loadactiveaccounts(redisClient)
+loadtransaction(redisClient)
+loaddispute(redisClient)
+loadlistinstruments(redisClient)
+loadlistinstrumentclassifierupi(redisClient)
+loadlistinstrumentclassifiercredit(redisClient)
+loadlistinstrumentclassifierdebit(redisClient)
+loadlistinstrumentclassifierneft(redisClient)
+loaddailyaverageriskscore(redisClient)
+loaddailyavergaecompliancescore(redisClient)
+loadpayments(redisClient)
+loadtransactions(redisClient)
+loadlistproducts(redisClient)
+loadproductclassifierlist(redisClient)
+loadlistdatacashbackissued(redisClient)
+loadlistdatacashbackused(redisClient)
+loadlistdatapremiumissued(redisClient)
+loadlistdatapremiumused(redisClient)
+loadlistdatastandardissued(redisClient)
+loadlistdatastandardused(redisClient)
 
 merchantlistinserter.loadmerchantslist(redisClient, getMerchants)
 
