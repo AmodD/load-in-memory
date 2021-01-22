@@ -64,9 +64,9 @@ getMerchants = merchantsdb + 'api/merchants'
 
 print(getMerchants)
 
-getTerminals = merchantsdb + 'api/terminals'
+getAcceptors = merchantsdb + 'api/acceptors'
 
-print(getTerminals)
+print(getAcceptors)
 
 redisClient = redis.StrictRedis(redis_host, redis_port)
 
@@ -99,7 +99,7 @@ loadlistdatastandardused(redisClient)
 
 merchantlistinserter.loadmerchantslist(redisClient, getMerchants)
 
-merchantlistinserter.loadterminalslist(redisClient, getTerminals)
+merchantlistinserter.loadacceptorslist(redisClient, getAcceptors)
 
 dataElementsSymbols.dataElementInserter(redisClient)
 
