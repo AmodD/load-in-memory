@@ -23,19 +23,19 @@ def loadmerchantslist(redisClient, getMerchants):
         sys.exit(1)
 
 
-def loadterminalslist(redisClient,getTerminals):
-    method = 'loadterminalslist'
+def loadacceptorslist(redisClient,getAcceptors):
+    method = 'loadacceptorslist'
     try:
-        response = requests.get(getTerminals,verify=False,timeout=None)
+        response = requests.get(getAcceptors,verify=False,timeout=None)
         response_text = json.loads(response.text)
-        terminalslist = response_text['payload']['data']
-        print(terminalslist)
+        acceptorslist = response_text['payload']['data']
+        print(acceptorslist)
 
-        for objects in range(len(terminalslist)):
-            redisClient.hmset("terminal" + str(terminalslist[objects]['id']), terminalslist[objects])
-            redisClient.sadd('list_of_terminals', str(terminalslist[objects]['id']))
+        for objects in range(len(acceptorslist)):
+            redisClient.hmset("acceptor" + str(acceptorslist[objects]['id']), acceptorslist[objects])
+            redisClient.sadd('list_of_acceptors', str(acceptorslist[objects]['id']))
 
-        fortiatelog('terminal ids loaded into memory successfully', '005', 'info', fileName, method)
+        fortiatelog('acceptor ids loaded into memory successfully', '005', 'info', fileName, method)
 
     except Exception as e:
         fortiatelog(e, '006', 'error', fileName, method)
