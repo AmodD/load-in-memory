@@ -1,3 +1,6 @@
+"""
+This module inserts the list of consumers into cache memory
+"""
 import requests
 import json
 import sys
@@ -5,7 +8,7 @@ from fpf.flo import fortiatelog
 fileName = 'consumerslistinserter.py'
 
 
-def loadconsumerslist(redisClient,consumersdbservice):
+def loadconsumerslist(redisClient, consumersdbservice):
     """
 This function loads the consumer IDs and PAN numbers in redis
 Requires following parameters as input
@@ -14,7 +17,7 @@ Requires following parameters as input
     """
     method = 'consumerslist'
     try:
-        response = requests.get(consumersdbservice,verify=False,timeout=120)
+        response = requests.get(consumersdbservice, verify=False, timeout=120)
         response_text = json.loads(response.text)
         consumers_list = response_text['payload']['data']
 
@@ -28,4 +31,3 @@ Requires following parameters as input
         fortiatelog(e, '005', 'error', fileName, method)
         fortiatelog('consumers-dbservice is not responding', '006', 'error', fileName, method)
         sys.exit(1)
-

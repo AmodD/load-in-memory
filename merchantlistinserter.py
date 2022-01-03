@@ -1,3 +1,6 @@
+"""
+This module performs the function of loading merchants into cache memory
+"""
 import requests
 import json
 import sys
@@ -6,9 +9,14 @@ fileName = 'merchantlistinserter.py'
 
 
 def loadmerchantslist(redisClient, getMerchants):
+    """
+
+    @param redisClient:
+    @param getMerchants:
+    """
     method = 'loadmerchantslist'
     try:
-        response = requests.get(getMerchants,verify=False,timeout=None)
+        response = requests.get(getMerchants, verify=False, timeout=None)
         response_text = json.loads(response.text)
         merchantslist = response_text['payload']['data']
         print(len(merchantslist))
@@ -23,10 +31,15 @@ def loadmerchantslist(redisClient, getMerchants):
         sys.exit(1)
 
 
-def loadacceptorslist(redisClient,getAcceptors):
+def loadacceptorslist(redisClient, getAcceptors):
+    """
+    This function loads the card acceptor or TID list
+    @param redisClient:
+    @param getAcceptors:
+    """
     method = 'loadacceptorslist'
     try:
-        response = requests.get(getAcceptors,verify=False,timeout=None)
+        response = requests.get(getAcceptors, verify=False, timeout=None)
         response_text = json.loads(response.text)
         acceptorslist = response_text['payload']['data']
         print(acceptorslist)

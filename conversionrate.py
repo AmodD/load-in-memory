@@ -1,8 +1,15 @@
+"""
+This module loads the conversion rates into cache memory
+"""
 from fpf.flo import fortiatelog
 fileName = 'coversionrate.py'
 
 
 def loadcurrencyconversionrates(redisClient):
+    """
+    This funciton loads the currency conversion rates into cache
+    @param redisClient:
+    """
     method = 'loadcurrencyconversionrate'
     converionrate_356 = {"356": 1.0000, "840": 70.9086, "978": 78.5764, "826": 93.3888, "036": 48.3025, "784": 19.3117,
                          "144": 0.390901}
