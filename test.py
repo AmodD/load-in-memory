@@ -1,3 +1,6 @@
+"""
+This is a unit test module
+"""
 import unittest
 
 
@@ -9,13 +12,22 @@ class testpreprocessor(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """
+        Setup class
+        """
         print('setUpClass')
 
     @classmethod
     def tearDownClass(cls):
+        """
+        Tear down class
+        """
         print('tearDownClass')
 
     def setUp(self):
+        """
+        Setup override
+        """
         print('setUp')
         self.inputpath = '~/.fortiate/48990/23/imported/merchant_transaction1.csv'
         self.inputpath1 = '~/.fortiate/48990/23/imported/cardholder_transaction1.csv'
@@ -27,8 +39,10 @@ class testpreprocessor(unittest.TestCase):
         self.nonemptycsv = '~/.fortiate/48990/23/imported/merchant_transaction1.csv'
 
     def tearDown(self):
+        """
+        Tear down override
+        """
         print('tearDown')
-
 
 
 if __name__ == '__main__':

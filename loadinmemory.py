@@ -1,3 +1,6 @@
+"""
+This is the main module of load-in-memory
+"""
 import sys
 import redis
 
@@ -12,8 +15,9 @@ import mcccodeinserter
 from bidashboardinserter import loadpayment, loadactiveaccounts, loadtransaction, loaddispute, loadlistinstruments, \
     loadlistinstrumentclassifierupi, loadlistinstrumentclassifiercredit, loadlistinstrumentclassifierdebit, \
     loadlistinstrumentclassifierneft, loaddailyaverageriskscore, loaddailyavergaecompliancescore, loadpayments, \
-    loadtransactions, loadlistproducts, loadproductclassifierlist, loadlistdatacashbackissued, loadlistdatacashbackused, \
-    loadlistdatapremiumissued, loadlistdatapremiumused, loadlistdatastandardissued, loadlistdatastandardused
+    loadtransactions, loadlistproducts, loadproductclassifierlist, loadlistdatacashbackissued, \
+    loadlistdatacashbackused, loadlistdatapremiumissued, loadlistdatapremiumused, loadlistdatastandardissued, \
+    loadlistdatastandardused
 
 from fpf import fenv
 from fpf import flo

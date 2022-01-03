@@ -1,8 +1,15 @@
+"""
+This module loads the dataelements into cache memory
+"""
 from fpf.flo import fortiatelog
 fileName = 'dataElementsSymbols.py'
 
 
 def dataElementInserter(redisClient):
+    """
+    This function laods the data elements in cache memory
+    @param redisClient:
+    """
     method = 'dataElementInserter'
     f100001000000 = {'0100': '!', '0110': '\"', '0120': '#', '0121': '$', '0130': '%', '0200': '&', '0210': '\'', '0220': '('}
     f100001003001 = {'00': '!', '01': '\"', '09': '#', '10': '$', '14': '%', '20': '&', '21': '\'', '22': '(', '26': ')',

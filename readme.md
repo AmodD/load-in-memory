@@ -74,7 +74,7 @@ get the ascii code for that particular data element value
 
 ## Limitation
 
-+ Currently the currency code and number of decimals are hard coded and 
++ Currently, the currency code and number of decimals are hard coded and 
 in future we will get the currency codes and number of decimal places 
 from an api
 
@@ -101,7 +101,7 @@ from an api
     conda activate <your environment name>
     conda activate Fortiate_env
     
-+ Then you should see a environment created as (Fortiate_env)
++ Then you should see an environment created as (Fortiate_env)
 
 > Then inside that fortiate_env type
 

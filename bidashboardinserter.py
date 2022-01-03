@@ -1,3 +1,6 @@
+"""
+This module does the work of loading the BI dashboard  into cache memory
+"""
 import requests
 import json
 import sys
@@ -7,26 +10,14 @@ import random
 fileName = 'bidashboardinserter.py'
 
 
-def loadpayment(redisClient):
-    method = 'loadpayment'
-    try:
-        res = [random.randrange(1, 9999, 1) for i in range(365)]
-        res = [str(x) for x in res]
-
-        for objects in range(len(res)):
-            redisClient.rpush('payment', str(res[objects]))
-
-        fortiatelog('payment loaded into memory successfully', '011', 'info', fileName, method)
-
-    except Exception as e:
-        fortiatelog(e, '012', 'error', fileName, method)
-        sys.exit(1)
-
-
 def loadactiveaccounts(redisClient):
+    """
+    This function loads the count of active accounts into cache memory
+    @param redisClient:
+    """
     method = 'loadactiveaccounts'
     try:
-        res = [random.randrange(1, 5, 1) for i in range(365)]
+        res = [random.randrange(1, 5, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -40,9 +31,13 @@ def loadactiveaccounts(redisClient):
 
 
 def loadtransaction(redisClient):
+    """
+    This function loads the transactions into cache memory
+    @param redisClient:
+    """
     method = 'loadtransaction'
     try:
-        res = [random.randrange(1, 99999, 1) for i in range(365)]
+        res = [random.randrange(1, 99999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -56,9 +51,13 @@ def loadtransaction(redisClient):
 
 
 def loaddispute(redisClient):
+    """
+    This function loads the disputes  into cache memory
+    @param redisClient:
+    """
     method = 'loaddispute'
     try:
-        res = [random.randrange(1, 99999, 1) for i in range(365)]
+        res = [random.randrange(1, 99999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -72,9 +71,13 @@ def loaddispute(redisClient):
 
 
 def loadlistinstruments(redisClient):
+    """
+    This function loads the instruments i.e. cards, mobiles into cache memory
+    @param redisClient:
+    """
     method = 'loadlistinstruments'
     try:
-        res = ["upi","credit","debit","neft"]
+        res = ["upi", "credit", "debit", "neft"]
 
         for objects in range(len(res)):
             redisClient.rpush('list_instruments', str(res[objects]))
@@ -87,9 +90,13 @@ def loadlistinstruments(redisClient):
 
 
 def loadlistinstrumentclassifierupi(redisClient):
+    """
+    This function loads the instrument classifier - UPI  into cache memory
+    @param redisClient:
+    """
     method = 'loadlistinstrumentclassifierupi'
     try:
-        res = [random.randrange(1, 99, 1) for i in range(365)]
+        res = [random.randrange(1, 99, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -103,15 +110,20 @@ def loadlistinstrumentclassifierupi(redisClient):
 
 
 def loadlistinstrumentclassifiercredit(redisClient):
+    """
+    This funciton loads the instrument classifier - Credit cards  into cache memory
+    @param redisClient:
+    """
     method = 'loadlistinstrumentclassifiercredit'
     try:
-        res = [random.randrange(1, 99, 1) for i in range(365)]
+        res = [random.randrange(1, 99, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
             redisClient.rpush('list_instrument_classifier_credit', str(res[objects]))
 
-        fortiatelog('list_instrument_classifier_credit loaded into memory successfully', '023', 'info', fileName, method)
+        fortiatelog('list_instrument_classifier_credit loaded into memory successfully', '023', 'info', fileName,
+                    method)
 
     except Exception as e:
         fortiatelog(e, '024', 'error', fileName, method)
@@ -119,9 +131,13 @@ def loadlistinstrumentclassifiercredit(redisClient):
 
 
 def loadlistinstrumentclassifierdebit(redisClient):
+    """
+    This function classifies the instrument classifier - Debit cards into cache memory
+    @param redisClient:
+    """
     method = 'loadlistinstrumentclassifierdebit'
     try:
-        res = [random.randrange(1, 99, 1) for i in range(365)]
+        res = [random.randrange(1, 99, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -135,9 +151,13 @@ def loadlistinstrumentclassifierdebit(redisClient):
 
 
 def loadlistinstrumentclassifierneft(redisClient):
+    """
+    This function loads the instrument classifier - NEFT into cache memory
+    @param redisClient:
+    """
     method = 'loadlistinstrumentclassifierneft'
     try:
-        res = [random.randrange(1, 99, 1) for i in range(365)]
+        res = [random.randrange(1, 99, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -151,9 +171,13 @@ def loadlistinstrumentclassifierneft(redisClient):
 
 
 def loaddailyaverageriskscore(redisClient):
+    """
+    This function loads the daily avg risk score into cache memory
+    @param redisClient:
+    """
     method = 'loaddailyaverageriskscore'
     try:
-        res = [random.randrange(1, 99, 1) for i in range(365)]
+        res = [random.randrange(1, 99, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -167,9 +191,13 @@ def loaddailyaverageriskscore(redisClient):
 
 
 def loaddailyavergaecompliancescore(redisClient):
+    """
+    This function loads the avg compliance score into cache memory
+    @param redisClient:
+    """
     method = 'loaddailyavergaecompliancescore'
     try:
-        res = [random.randrange(1, 99, 1) for i in range(365)]
+        res = [random.randrange(1, 99, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -183,9 +211,13 @@ def loaddailyavergaecompliancescore(redisClient):
 
 
 def loadpayments(redisClient):
+    """
+    This function loads the payments into cache memory
+    @param redisClient:
+    """
     method = 'loadpayments'
     try:
-        res = [random.randrange(1, 9999, 1) for i in range(365)]
+        res = [random.randrange(1, 9999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -199,9 +231,13 @@ def loadpayments(redisClient):
 
 
 def loadtransactions(redisClient):
+    """
+    This function loads the transactions into cache memory
+    @param redisClient:
+    """
     method = 'loadtransactions'
     try:
-        res = [random.randrange(1, 99999, 1) for i in range(365)]
+        res = [random.randrange(1, 99999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -215,6 +251,10 @@ def loadtransactions(redisClient):
 
 
 def loadlistproducts(redisClient):
+    """
+    This function loads the list of products in cache memory
+    @param redisClient:
+    """
     method = 'loadlistproducts'
     try:
         res = ["standard", "premium", "cashback"]
@@ -230,6 +270,10 @@ def loadlistproducts(redisClient):
 
 
 def loadproductclassifierlist(redisClient):
+    """
+    This function loads the product classifier  in cache memory
+    @param redisClient:
+    """
     method = 'loadproductclassifierlist'
     try:
         res = ["issued", "used"]
@@ -245,9 +289,13 @@ def loadproductclassifierlist(redisClient):
 
 
 def loadlistdatacashbackissued(redisClient):
+    """
+    This funciton loads the cashback related data in cache memory
+    @param redisClient:
+    """
     method = 'loadlistdatacashbackissued'
     try:
-        res = [random.randrange(1, 9999, 1) for i in range(365)]
+        res = [random.randrange(1, 9999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -261,9 +309,13 @@ def loadlistdatacashbackissued(redisClient):
 
 
 def loadlistdatacashbackused(redisClient):
+    """
+    This function loads the cashbacks used data in cache memory
+    @param redisClient:
+    """
     method = 'loadlistdatacashbackused'
     try:
-        res = [random.randrange(1, 9999, 1) for i in range(365)]
+        res = [random.randrange(1, 9999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -277,9 +329,13 @@ def loadlistdatacashbackused(redisClient):
 
 
 def loadlistdatapremiumissued(redisClient):
+    """
+    This funciton loads the list of premium cards issued in cache memory
+    @param redisClient:
+    """
     method = 'loadlistdatapremiumissued'
     try:
-        res = [random.randrange(1, 9999, 1) for i in range(365)]
+        res = [random.randrange(1, 9999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -293,9 +349,13 @@ def loadlistdatapremiumissued(redisClient):
 
 
 def loadlistdatapremiumused(redisClient):
+    """
+    This function loads the premium cards usage in cache memory
+    @param redisClient:
+    """
     method = 'loadlistdatapremiumused'
     try:
-        res = [random.randrange(1, 9999, 1) for i in range(365)]
+        res = [random.randrange(1, 9999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -309,9 +369,13 @@ def loadlistdatapremiumused(redisClient):
 
 
 def loadlistdatastandardissued(redisClient):
+    """
+    This function loads the standard cards issued in cache memory
+    @param redisClient:
+    """
     method = 'loadlistdatastandardissued'
     try:
-        res = [random.randrange(1, 9999, 1) for i in range(365)]
+        res = [random.randrange(1, 9999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -325,9 +389,13 @@ def loadlistdatastandardissued(redisClient):
 
 
 def loadlistdatastandardused(redisClient):
+    """
+    This function loads the standard card usage in cache memory
+    @param redisClient:
+    """
     method = 'loadlistdatastandardused'
     try:
-        res = [random.randrange(1, 9999, 1) for i in range(365)]
+        res = [random.randrange(1, 9999, 1) for _ in range(365)]
         res = [str(x) for x in res]
 
         for objects in range(len(res)):
@@ -338,3 +406,22 @@ def loadlistdatastandardused(redisClient):
     except Exception as e:
         fortiatelog(e, '052', 'error', fileName, method)
         sys.exit(1)
+
+# def loadpayment(redisClient):
+#     """
+#     This function loads the payments into cache memory
+#     @param redisClient:
+#     """
+#     method = 'loadpayment'
+#     try:
+#         res = [random.randrange(1, 9999, 1) for i in range(365)]
+#         res = [str(x) for x in res]
+#
+#         for objects in range(len(res)):
+#             redisClient.rpush('payment', str(res[objects]))
+#
+#         fortiatelog('payment loaded into memory successfully', '011', 'info', fileName, method)
+#
+#     except Exception as e:
+#         fortiatelog(e, '012', 'error', fileName, method)
+#         sys.exit(1)

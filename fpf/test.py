@@ -1,4 +1,6 @@
-import os
+"""
+Unit testing module
+"""
 import unittest
 
 
@@ -6,18 +8,30 @@ class testpreprocessor(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """
+        Test
+        """
         print('setUpClass')
 
     @classmethod
     def tearDownClass(cls):
+        """
+        Test
+        """
         print('tearDownClass')
 
     def setUp(self):
+        """
+        Test
+        """
         print('setUp')
         # self.microservicenamepreprocessor = 'preprocessor'
         # self.nonexistingmicroservicename = 'india'
 
     def tearDown(self):
+        """
+        Test
+        """
         print('tearDown')
 
     # def test_fenv_sethostport(self):
@@ -32,6 +46,7 @@ class testpreprocessor(unittest.TestCase):
     #     with self.assertRaises(SystemExit) as cm:
     #         sethostport(self.nonexistingmicroservicename)
     #     self.assertEqual(cm.exception.code, 1)
+
 
 if __name__ == '__main__':
     unittest.main()
